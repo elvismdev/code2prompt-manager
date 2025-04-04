@@ -1,0 +1,28 @@
+{
+  "name": "code2prompt-manager",
+  "version": "1.0.0",
+  "description": "A CLI tool to manage code2prompt file size limits",
+  "main": "index.js",
+  "bin": {
+    "code2prompt-manager": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "code2prompt",
+    "cli",
+    "size-management",
+    "tool"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^8.3.0",
+    "inquirer": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

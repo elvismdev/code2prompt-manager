@@ -15,7 +15,7 @@ npx code2prompt-manager
 ## Prerequisites
 
 - Node.js 12 or higher
-- code2prompt must already be installed on your system
+- `code2prompt` must already be installed on your system
 
 ## Usage
 

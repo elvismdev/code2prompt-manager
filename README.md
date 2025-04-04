@@ -70,20 +70,20 @@ code2prompt-manager -e "*.log,temp/**"
 
 The tool automatically excludes common large directories and files:
 
-- node_modules/**
-- vendor/**
-- .git/**
-- .next/**
-- .husky/**
-- dist/**
-- build/**
-- public/**
-- docs/**
+- node_modules/\*\*
+- vendor/\*\*
+- .git/\*\*
+- .next/\*\*
+- .husky/\*\*
+- dist/\*\*
+- build/\*\*
+- public/\*\*
+- docs/\*\*
 - package-lock.json
 - composer.lock
 - yarn.lock
-- *.min.js
-- *.min.css
+- \*.min.js
+- \*.min.css
 
 You can add or remove excludes through the interactive selection.
 

@@ -29,20 +29,23 @@ code2prompt-manager [options]
 - `-d, --directory <path>`: Directory to scan (default: current directory)
 - `-e, --extra-exclude <patterns>`: Additional exclude patterns (comma-separated)
 - `-i, --include <patterns>`: Include patterns (comma-separated)
-- `-O, --output-file <file>`: Output file name (default: codebase.md)
+- `-O, --output-file <file>`: Output file name (default: current directory name + .md)
 - `-F, --output-format <format>`: Output format: markdown, json, or xml (default: markdown)
 - `--include-priority`: Include files in case of conflict between include and exclude patterns
 - `--full-directory-tree`: List the full directory tree
 - `-c, --encoding <encoding>`: Optional tokenizer to use for token count
 - `--line-numbers`: Add line numbers to the source code
 - `-n, --no-execute`: Only show the command, don't execute it
+- `--auto-exclude`: Automatically exclude files to stay under size limit
 
 ## How it Works
 
 1. The tool scans your codebase directory
 2. Files and directories are sorted by size (largest first)
-3. An interactive UI lets you select which files to exclude
-4. The tool generates and executes the appropriate code2prompt command
+3. When using `--auto-exclude`, the tool automatically selects large files to exclude to meet the size limit
+4. An interactive UI lets you select which files to exclude or include
+5. The tool calculates the estimated output file size based on your selections
+6. The tool generates and executes the appropriate code2prompt command
 
 ## Example
 
@@ -52,6 +55,9 @@ code2prompt-manager
 
 # Set a custom size limit (in KB)
 code2prompt-manager --limit 350
+
+# Automatically exclude large files to stay under the limit
+code2prompt-manager --limit 350 --auto-exclude
 
 # Specify a custom output file
 code2prompt-manager --output-file my-project.md
@@ -83,6 +89,15 @@ The tool automatically excludes common large directories and files:
 - *.min.css
 
 You can add or remove excludes through the interactive selection.
+
+## Size Limit Enforcement
+
+The `-l, --limit` option sets a target size limit for your output file:
+
+- The tool will show you the estimated output size based on your selections
+- If you're over the limit, it will warn you with color-coded indicators
+- Use `--auto-exclude` to have the tool automatically exclude the largest files to meet your limit
+- You can still manually adjust the selection after auto-exclude
 
 ## Tips for Reducing File Size
 

@@ -7,6 +7,12 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+// Get the current directory name for default output file
+const getCurrentDirectoryName = () => {
+	const currentPath = process.cwd();
+	return path.basename(currentPath) + '.md';
+};
+
 // Package information
 program
 	.name('code2prompt-manager')
@@ -19,7 +25,7 @@ program
 	.option('-d, --directory <path>', 'Directory to scan', '.')
 	.option('-e, --extra-exclude <patterns>', 'Additional exclude patterns (comma-separated)')
 	.option('-i, --include <patterns>', 'Include patterns (comma-separated)')
-	.option('-O, --output-file <file>', 'Output file name', 'codebase.md')
+	.option('-O, --output-file <file>', 'Output file name', getCurrentDirectoryName())
 	.option('-F, --output-format <format>', 'Output format: markdown, json, or xml', 'markdown')
 	.option('--include-priority', 'Include files in case of conflict between include and exclude patterns')
 	.option('--full-directory-tree', 'List the full directory tree')

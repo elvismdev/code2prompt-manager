@@ -72,11 +72,13 @@ The tool automatically excludes common large directories and files:
 - .git/**
 - .next/**
 - .husky/**
+- dist/**
+- build/**
+- public/**
+- docs/**
 - package-lock.json
 - composer.lock
 - yarn.lock
-- dist/**
-- build/**
 - *.min.js
 - *.min.css
 

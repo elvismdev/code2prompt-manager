@@ -6,6 +6,7 @@ const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const packageJson = require('./package.json');
 
 // Get the current directory name for default output file
 const getCurrentDirectoryName = () => {
@@ -17,7 +18,7 @@ const getCurrentDirectoryName = () => {
 program
 	.name('code2prompt-manager')
 	.description('A CLI tool to manage code2prompt file size limits')
-	.version('1.0.0');
+	.version(packageJson.version);
 
 // Command line options
 program

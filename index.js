@@ -299,21 +299,20 @@ async function main() {
 			cmd += ` --line-numbers`;
 		}
 
-		// Add exclude options
+		// Add exclude options - use a single -e flag with comma-separated patterns
 		if (allExcludes.length > 0) {
-			allExcludes.forEach(pattern => {
-				cmd += ` -e "${pattern}"`;
-			});
+			cmd += ` -e "${allExcludes.join(',')}"`;
 		}
 
-		// Add include options
+		// Add include options - use a single -i flag with comma-separated patterns
 		if (options.include) {
-			options.include.split(',').forEach(pattern => {
-				pattern = pattern.trim();
-				if (pattern) {
-					cmd += ` -i "${pattern}"`;
-				}
-			});
+			const includePatterns = options.include.split(',')
+				.map(pattern => pattern.trim())
+				.filter(pattern => pattern);
+
+			if (includePatterns.length > 0) {
+				cmd += ` -i "${includePatterns.join(',')}"`;
+			}
 		}
 
 		// Add the directory path at the end

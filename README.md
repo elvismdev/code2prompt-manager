@@ -7,9 +7,6 @@ A CLI tool to manage file size limits when using [code2prompt](https://github.co
 ```bash
 # Install globally
 npm install -g code2prompt-manager
-
-# Or run directly with npx
-npx code2prompt-manager
 ```
 
 ## Prerequisites

@@ -70,6 +70,8 @@ function scanDirectory(rootDir) {
 		'assets/images',
 		'assets/svg',
 		'src/assets/images',
+		'assets/icons',
+		'languages',
 	];
 
 	// Add extra exclude directories from command line
@@ -263,6 +265,8 @@ async function main() {
 			'assets/images/**',
 			'assets/svg/**',
 			'src/assets/images/**',
+			'assets/icons/**',
+			'languages/**',
 			'package-lock.json',
 			'composer.lock',
 			'yarn.lock',

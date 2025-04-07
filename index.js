@@ -56,7 +56,21 @@ function formatSize(bytes) {
 function scanDirectory(rootDir) {
 	const items = [];
 	// Default directories to skip during scanning
-	const skipDirs = ['node_modules', '.git', 'vendor', '.next', 'dist', 'build', '.husky', 'public', 'docs'];
+	const skipDirs = [
+		'node_modules',
+		'.git',
+		'vendor',
+		'.next',
+		'dist',
+		'build',
+		'.husky',
+		'public',
+		'docs',
+		'assets/fonts',
+		'assets/images',
+		'assets/svg',
+		'src/assets/images',
+	];
 
 	// Add extra exclude directories from command line
 	if (options.extraExclude) {
@@ -245,6 +259,10 @@ async function main() {
 			'build/**',
 			'public/**',
 			'docs/**',
+			'assets/fonts/**',
+			'assets/images/**',
+			'assets/svg/**',
+			'src/assets/images/**',
 			'package-lock.json',
 			'composer.lock',
 			'yarn.lock',

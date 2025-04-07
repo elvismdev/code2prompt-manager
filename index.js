@@ -8,6 +8,34 @@ const path = require('path');
 const { execSync } = require('child_process');
 const packageJson = require('./package.json');
 
+// Define common directories to exclude
+const COMMON_EXCLUDE_DIRS = [
+	'node_modules',
+	'.git',
+	'vendor',
+	'.next',
+	'dist',
+	'build',
+	'.husky',
+	'public',
+	'docs',
+	'assets/fonts',
+	'assets/images',
+	'assets/svg',
+	'src/assets/images',
+	'assets/icons',
+	'languages',
+];
+
+// Define common file patterns to exclude
+const COMMON_EXCLUDE_FILES = [
+	'package-lock.json',
+	'composer.lock',
+	'yarn.lock',
+	'*.min.js',
+	'*.min.css'
+];
+
 // Get the current directory name for default output file
 const getCurrentDirectoryName = () => {
 	const currentPath = process.cwd();
@@ -56,23 +84,7 @@ function formatSize(bytes) {
 function scanDirectory(rootDir) {
 	const items = [];
 	// Default directories to skip during scanning
-	const skipDirs = [
-		'node_modules',
-		'.git',
-		'vendor',
-		'.next',
-		'dist',
-		'build',
-		'.husky',
-		'public',
-		'docs',
-		'assets/fonts',
-		'assets/images',
-		'assets/svg',
-		'src/assets/images',
-		'assets/icons',
-		'languages',
-	];
+	const skipDirs = [...COMMON_EXCLUDE_DIRS];
 
 	// Add extra exclude directories from command line
 	if (options.extraExclude) {
@@ -252,26 +264,10 @@ async function main() {
 
 		// Default excludes
 		const defaultExcludes = [
-			'node_modules/**',
-			'vendor/**',
-			'.git/**',
-			'.next/**',
-			'.husky/**',
-			'dist/**',
-			'build/**',
-			'public/**',
-			'docs/**',
-			'assets/fonts/**',
-			'assets/images/**',
-			'assets/svg/**',
-			'src/assets/images/**',
-			'assets/icons/**',
-			'languages/**',
-			'package-lock.json',
-			'composer.lock',
-			'yarn.lock',
-			'*.min.js',
-			'*.min.css'
+			// Add directory patterns with /**
+			...COMMON_EXCLUDE_DIRS.map(dir => `${dir}/**`),
+			// Add file patterns
+			...COMMON_EXCLUDE_FILES
 		];
 
 		// Add extra exclude patterns from command line to defaultExcludes

@@ -28,6 +28,7 @@ const CONFIG = {
 		'assets/icons',
 		'languages',
 		'images',
+		'tests',
 	],
 	// Default file patterns to exclude
 	COMMON_EXCLUDE_FILES: [

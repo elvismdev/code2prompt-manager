@@ -32,13 +32,16 @@ const CONFIG = {
 	],
 	// Default file patterns to exclude
 	COMMON_EXCLUDE_FILES: [
-		'screenshot.png',
-		'screenshot.jpg',
 		'package-lock.json',
 		'composer.lock',
 		'yarn.lock',
+		'LICENSE.md',
 		'*.min.js',
-		'*.min.css'
+		'*.min.css',
+		'*.jpg',
+		'*.png',
+		'*.svg',
+		'*.webp'
 	]
 };
 

@@ -41,7 +41,8 @@ const CONFIG = {
 		'*.jpg',
 		'*.png',
 		'*.svg',
-		'*.webp'
+		'*.webp',
+		'*.csv',
 	]
 };
 
